@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/winstrap.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/winstrap-optional.min.css') }}" />
+  <title>House Price Predictions</title>
+</head>
+
+<body>
+  <div>
+    <div class="container-fluid">
+      <div class="row">       
+        <div class="content"
+          style="background-image: url(https://www.smartpropertyinvestment.com.au/images/intro-images/839x487/property-market-spi.jpg); background-repeat: no-repeat; background-size: 100%; height: 600px;">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col">
+                <div class="jumbotron theme-light">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-16">
+                        <div class="type-h2"><strong>House Price Predictor</strong></div>
+                        <p>
+                          <span style="font-style: italic;">Choose your favorite features and customize them to
+                            suit your needs. Let's go!</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container-fluid second">
+            <div class="row">
+              <form action="{{ url_for('predict')}}"method="post">
+                <div class="form-group">
+                  <div class="container-fuild">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <label for="RoomNumber">Number of Rooms:</label>
+                          <input type="number" class="form-control" id="RoomNumber" name="RoomNumber" placeholder="1-12" value="1"/>
+                        </div>
+                        <div class="col-md-4">
+                          <label for="DistanceFromCBD">Distance From CBD:</label>
+                          <input type="number" class="form-control" id="DistanceFromCBD" name="DistanceFromCBD" placeholder="0-50" value="0"/>
+                        </div>
+                        <div class="col-md-4">
+                          <label for="NumberOfBathroom">Number of Bathroom:</label>
+                          <input type="number" class="form-control" id="NumberOfBathroom" name="NumberOfBathroom" placeholder="0-9" value="0"/>
+                        </div>
+                        <div class="col-md-4">
+                          <label for="NumberOfCarPark">Number of Car Space:</label>
+                          <input type="number" class="form-control" id="NumberOfCarPark" name="NumberOfCarPark" placeholder="0-18" value="0"/>
+                        </div>
+                        <div class="col-md-4">
+                          <label for="AmountOfLandSize">Amount of Land Size:</label>
+                          <input type="number" class="form-control" id="AmountOfLandSize" name="AmountOfLandSize" placeholder="1-434000" value="1"/>
+                        </div>
+                        <div class="col-md-4">
+                          <label for="AmountOfBuildingArea">Amount of Building Area:</label>
+                          <input type="number" class="form-control" id="AmountOfBuildingArea" name="AmountOfBuildingArea" placeholder="1-45000" value="1"/>
+                        </div>         
+                      </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="container-fuild">
+                      <div class="row">
+                        <div class="col-md-4">
+                            <label for="NumberOfPropertyCount">Property Count:</label>
+                            <input type="number" class="form-control" id="NumberOfPropertyCount" name="NumberOfPropertyCount" placeholder="83-21650" value="83"/>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="YearBuiltRanges">Year Built:</label>
+                            <input type="number" class="form-control" id="YearBuiltRanges" name="YearBuiltRanges" placeholder="1830-2019" value="1830"/>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="NumberOfCrimeRate">Crime Rate Number:</label>
+                            <input type="number" class="form-control" id="NumberOfCrimeRate" name="NumberOfCrimeRate" placeholder="55-1013" value="55"/>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="NumberOfNearbySchools">Nearby Schools Count:</label>
+                            <input type="number" class="form-control" id="NumberOfNearbySchools" name="NumberOfNearbySchools" placeholder="0-26" value="0"/>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+               <button type="submit" class="btn btn-primary btn-block btn-large">Predict Price</button>
+               <button type="submit" class="btn btn-default btn-block btn-large">Clear</button>
+               <div class="form-group">
+                  <div class="btn-group">
+                    <!-- <a class="btn btn-primary" onclick="predictPrice()">Predict Price</a> -->
+                    <!-- <a class="btn btn-default" onclick="clear_results()">Clear</a> -->
+                  </div>
+                </div>
+              </form>
+              <H1>{{prediction_1}}</H1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='js/vendor/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/vendor/app.js') }}"></script>
+</body>
+
+</html>
